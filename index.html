@@ -3,209 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TK McGhee | Under Construction</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&family=Gochi+Hand&family=Roboto+Condensed:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    <title>tkmcghee.com — SBPD CASE #007: INVESTIGATION IN PROGRESS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        psych: ['Fredoka', 'sans-serif'],
+                    },
+                    colors: {
+                        psychBg: '#0b091a',
+                        psychCard: '#161233',
+                        psychYellow: '#ffd700',
+                        psychYellowBright: '#ffeb3b',
+                        psychGreen: '#4caf50',
+                        psychGreenGlow: '#22c55e',
+                    },
+                    animation: {
+                        'float': 'float 4s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 3s infinite alternate',
+                        'typewriter': 'typing 3.5s steps(30, end) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-16px) rotate(1.5deg)' },
+                        },
+                        pulseGlow: {
+                            '0%': { filter: 'drop-shadow(0 0 15px rgba(76, 175, 80, 0.35))' },
+                            '100%': { filter: 'drop-shadow(0 0 35px rgba(255, 215, 0, 0.65))' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --bg-dark: #060608;
-            --paper-bg: #e4dcd0;
-            --ink-dark: #1c1815;
-            --ink-red: #8b0000;
-            --neon-teal: #00f0ff;
-            --neon-violet: #bd00ff;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
         body {
-            background-color: var(--bg-dark);
-            font-family: 'Roboto Condensed', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            color: #fff;
-        }
-
-        .desk-container {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: radial-gradient(circle at 50% 45%, #18151f 0%, #060508 75%, #010102 100%);
-            perspective: 1600px;
-        }
-
-        .journal {
-            position: relative;
-            width: 440px;
-            height: 600px;
-            background: #0f0805;
-            border-radius: 6px 18px 18px 6px;
-            transform-style: preserve-3d;
-            transform: rotateX(3deg) rotateY(-5deg);
-            box-shadow: 
-                -30px 40px 70px rgba(0, 0, 0, 0.95),
-                0 0 40px rgba(0, 240, 255, 0.12),
-                0 20px 50px rgba(189, 0, 255, 0.18);
-        }
-
-        .journal-cover {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #140804;
+            background-color: #0b091a;
             background-image: 
-                linear-gradient(135deg, rgba(20, 10, 6, 0.4) 0%, rgba(5, 2, 1, 0.9) 100%),
-                url('assets/texture.jpg');
-            background-size: cover;
-            background-position: center;
-            border-radius: 6px 18px 18px 6px;
-            border-left: 18px solid #080402;
-            padding: 35px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            text-align: center;
+                radial-gradient(circle at 50% 15%, rgba(76, 175, 80, 0.15) 0%, transparent 55%),
+                radial-gradient(circle at 85% 85%, rgba(255, 215, 0, 0.08) 0%, transparent 45%),
+                radial-gradient(circle at 10% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        .psych-glow-text {
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 40px rgba(76, 175, 80, 0.3);
+        }
+
+        .psych-green-glow {
+            text-shadow: 0 0 15px rgba(76, 175, 80, 0.6);
+        }
+
+        .evidence-tape {
+            background: repeating-linear-gradient(
+                -45deg,
+                #161233,
+                #161233 20px,
+                #ffd700 20px,
+                #ffd700 40px
+            );
+        }
+
+        .typewriter-text {
             overflow: hidden;
-            box-shadow: inset 0 0 90px rgba(0, 0, 0, 0.92);
+            border-right: 3px solid #ffd700;
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 4s steps(40, end) infinite, blink-caret 0.75s step-end infinite;
         }
 
-        .rainbow-strap {
-            position: absolute;
-            top: -2px;
-            right: 50px;
-            width: 30px;
-            height: calc(100% + 4px);
-            background: linear-gradient(90deg, 
-                #d60000 0%, #ff7700 16%, #ffcc00 33%, 
-                #008800 50%, #0000dd 66%, #4b0082 83%, #800080 100%);
-            box-shadow: 6px 0 16px rgba(0, 0, 0, 0.9);
+        @keyframes typing {
+            0% { width: 0 }
+            50% { width: 100% }
+            90% { width: 100% }
+            100% { width: 0 }
         }
 
-        .carved-text {
-            font-family: 'Gochi Hand', cursive;
-            font-size: 2.2rem;
-            color: #1a0b05;
-            opacity: 0.9;
-            mix-blend-mode: multiply;
-            text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.1), -1px -1px 2px rgba(0, 0, 0, 0.9);
-            transform: rotate(-4deg);
-            align-self: flex-start;
-            margin-left: 10px;
-        }
-
-        /* Burning Salt Line Animation Container */
-        .salt-container {
-            margin: auto 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .salt-line {
-            width: 280px;
-            height: 6px;
-            background: linear-gradient(90deg, transparent, #ffffff, #e0ded7, #ffffff, transparent);
-            box-shadow: 0 0 12px var(--neon-teal), 0 0 25px rgba(0, 240, 255, 0.6);
-            border-radius: 3px;
-            animation: pulse-salt 2s infinite alternate ease-in-out;
-        }
-
-        @keyframes pulse-salt {
-            0% { opacity: 0.7; box-shadow: 0 0 8px var(--neon-teal); }
-            100% { opacity: 1; box-shadow: 0 0 20px var(--neon-teal), 0 0 30px rgba(189, 0, 255, 0.5); }
-        }
-
-        .construction-text {
-            font-family: 'Coming Soon', cursive;
-            color: var(--neon-teal);
-            font-size: 1.3rem;
-            text-shadow: 0 0 10px var(--neon-teal), 0 0 20px rgba(0, 240, 255, 0.4);
-            letter-spacing: 1.5px;
-        }
-
-        .sub-warning {
-            font-size: 0.8rem;
-            color: #bfa89b;
-            font-family: 'Roboto Condensed', sans-serif;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* Stickers on cover */
-        .sticker {
-            position: absolute;
-            z-index: 7;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.85));
-        }
-
-        .supernatural-sticker {
-            width: 130px;
-            height: 130px;
-            top: 110px;
-            left: 30px;
-            transform: rotate(-14deg);
-        }
-
-        .wot-sticker {
-            width: 100px;
-            height: 100px;
-            bottom: 80px;
-            right: 50px;
-            transform: rotate(12deg);
-            padding: 4px;
-            background: #000;
-            border-radius: 8px;
-            border: 2px solid #222;
-        }
-
-        .sticker-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #ffd700 }
         }
     </style>
 </head>
-<body>
-    <div class="desk-container">
-        <div class="journal">
-            <div class="journal-cover">
-                <div class="rainbow-strap"></div>
-                <div class="carved-text">CassDean</div>
-                
-                <!-- Stickers -->
-                <div class="sticker supernatural-sticker">
-                    <img src="assets/supernaturalsticker.png" alt="Supernatural Sticker" class="sticker-img">
-                </div>
-                <div class="sticker wot-sticker">
-                    <img src="assets/wotsticker.jpg" alt="Wheel of Time Sticker" class="sticker-img">
-                </div>
+<body class="min-h-screen text-slate-100 font-sans flex flex-col justify-between overflow-x-hidden selection:bg-psychGreen selection:text-black">
 
-                <!-- Center Animation -->
-                <div class="salt-container">
-                    <div class="salt-line"></div>
-                    <div class="construction-text">WARDING IN PROGRESS...</div>
-                    <div class="sub-warning">Check salt lines before entry</div>
-                    <div class="salt-line"></div>
-                </div>
+    <header class="w-full h-3.5 bg-gradient-to-r from-psychGreen via-psychYellow to-psychGreen shadow-lg shadow-psychGreen/20 relative">
+        <div class="absolute inset-0 bg-black/10"></div>
+    </header>
 
-                <div style="height: 20px;"></div>
+    <main class="container mx-auto px-4 py-8 flex-1 flex flex-col items-center justify-center text-center relative z-10 max-w-4xl">
+
+        <!-- SBPD Case File Badge -->
+        <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-psychCard/90 border border-psychGreen/40 text-psychGreen font-bold text-xs sm:text-sm tracking-wider uppercase mb-8 shadow-xl backdrop-blur-md">
+            <span class="w-2.5 h-2.5 rounded-full bg-psychYellow animate-ping"></span>
+            <span>SBPD CASE FILE #701: ACTIVE PSYCHIC INVESTIGATION</span>
+        </div>
+
+        <!-- Psych-Themed Construction Headline -->
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-psych font-bold tracking-tight mb-4 leading-tight">
+            <span class="block text-psychYellow psych-glow-text">
+                CASE IN PROGRESS!
+            </span>
+        </h1>
+
+        <!-- Themed Subtitle Narrative -->
+        <div class="max-w-2xl mx-auto mb-8">
+            <p class="text-xl sm:text-2xl font-light text-slate-200 mb-3">
+                Shawn & Gus are slicing up something delicious for <span class="font-bold text-psychYellow underline decoration-psychGreen underline-offset-4">tkmcghee.com</span>.
+            </p>
+            <div class="inline-block max-w-full overflow-hidden py-1">
+                <p class="typewriter-text text-psychGreen font-psych text-base sm:text-lg font-semibold tracking-wide">
+                    Currently inspecting evidence... wait for iiiiiiiit!
+                </p>
             </div>
         </div>
-    </div>
+
+        <!-- Floating Pineapple Showcase -->
+        <div class="relative my-2 group cursor-pointer" onclick="askPsychic()">
+            <!-- Radial background ambient aura -->
+            <div class="absolute inset-0 bg-gradient-to-r from-psychGreen/20 via-psychYellow/25 to-psychGreen/20 rounded-full blur-3xl opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+            <!-- Floating Pineapple Graphic Container -->
+            <div class="relative animate-float animate-pulse-glow transition-transform duration-300 transform group-hover:scale-105">
+                <img 
+                    src="assets/51pGeDsJJcL.jpg" 
+                    onerror="this.onerror=null; this.src='https://placehold.co/400x500/161233/ffd700?text=Psych!+🍍'; "
+                    alt="Psych Quote Pineapple - Suck It" 
+                    class="w-64 sm:w-80 md:w-96 h-auto mx-auto rounded-3xl shadow-2xl border-2 border-psychGreen/40 object-contain p-2 bg-psychCard/60 backdrop-blur-sm"
+                />
+            </div>
+        </div>
+
+        <!-- Interactive Clue / Quote Generator Card -->
+        <div class="mt-8 w-full max-w-lg bg-psychCard/90 border border-slate-800/80 rounded-2xl p-6 shadow-2xl backdrop-blur-md relative overflow-hidden">
+            <div class="flex items-center justify-between text-xs uppercase tracking-widest text-slate-400 mb-3 font-semibold border-b border-slate-800 pb-2">
+                <span>Psychic Division Transcripts</span>
+                <span class="text-psychGreen font-mono">CONFIDENTIAL</span>
+            </div>
+            
+            <div id="quote-display" class="text-xl sm:text-2xl font-psych text-psychYellow font-bold min-h-[4.5rem] flex items-center justify-center transition-all duration-300 transform px-2">
+                "Did you hear about Pluto? That's messed up, right?"
+            </div>
+            
+            <!-- Interactive Buttons -->
+            <div class="mt-5 flex flex-wrap gap-3 justify-center">
+                <button onclick="nextClue()" class="px-5 py-2.5 rounded-xl bg-psychGreen hover:bg-emerald-400 text-black font-psych font-bold text-sm tracking-wider uppercase transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-psychGreen/20">
+                    🍍 Slice Pineapple for Clue
+                </button>
+                <button onclick="askPsychic()" class="px-5 py-2.5 rounded-xl bg-psychYellow hover:bg-yellow-300 text-black font-psych font-bold text-sm tracking-wider uppercase transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-psychYellow/20">
+                    🔮 Ask Shawn
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="w-full py-6 text-center text-slate-400 text-sm border-t border-slate-900/80 bg-black/60 backdrop-blur-md relative z-10">
+        <p class="mb-1 font-medium">© <span id="year"></span> tkmcghee.com — Psych Division Headquarters</p>
+        <p class="text-xs text-psychGreen/90 font-psych tracking-wide">You know that's right. C'mon, son!</p>
+    </footer>
+
+    <script>
+        // Dynamic current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Authentic Psych Clues & Catchphrases
+        const clues = [
+            "Did you hear about Pluto? That's messed up, right?",
+            "I've heard it both ways!",
+            "Come on, son!",
+            "Wait for iiiiiiiit...",
+            "I dazzle, and I stretch.",
+            "Gus, don't be a gooey chocolate chip cookie.",
+            "Are you a fan of delicious flavor?",
+            "Gus, don't be this crevice in my arm.",
+            "Suck it! 🍍",
+            "Just because you put syrup on something don't make it pancakes.",
+            "I would rather fall in love with a vegan.",
+            "No body, no crime!",
+            "You know I'm a sympathetic crier, Shawn."
+        ];
+
+        let currentIndex = 0;
+        const quoteDisplay = document.getElementById('quote-display');
+
+        function nextClue() {
+            quoteDisplay.style.opacity = '0';
+            quoteDisplay.style.transform = 'translateY(8px)';
+
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % clues.length;
+                quoteDisplay.textContent = `"${clues[currentIndex]}"`;
+                quoteDisplay.style.opacity = '1';
+                quoteDisplay.style.transform = 'translateY(0px)';
+            }, 200);
+        }
+
+        function askPsychic() {
+            quoteDisplay.style.opacity = '0';
+            quoteDisplay.style.transform = 'scale(0.95)';
+
+            const visions = [
+                "🔮 Shawn places fingers to his temple... 'I'm getting a vision: This site is gonna be legendary!'",
+                "🔮 'Gus, the spirits are telling me... we need more jackfruit.'",
+                "🔮 'I sense... clean code, zero bugs, and a whole lot of pineapple!'",
+                "🔮 Shawn gasps... 'The psychic wires say: Wait for iiiiiiiit!'"
+            ];
+
+            setTimeout(() => {
+                const randomVision = visions[Math.floor(Math.random() * visions.length)];
+                quoteDisplay.textContent = randomVision;
+                quoteDisplay.style.opacity = '1';
+                quoteDisplay.style.transform = 'scale(1)';
+            }, 220);
+        }
+
+        // Auto-cycle clues every 5 seconds
+        setInterval(nextClue, 5000);
+    </script>
 </body>
 </html>
